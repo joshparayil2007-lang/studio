@@ -3,7 +3,6 @@ import { CategoryNav } from "@/components/listings/CategoryNav";
 import { ListingCard } from "@/components/listings/ListingCard";
 import { LocationHero } from "@/components/home/LocationHero";
 import { ArrowRight, TrendingUp, ShieldCheck, Sparkles } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const featuredListings = [
   {
@@ -12,8 +11,6 @@ const featuredListings = [
     price: "₹1,85,000",
     location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-bike/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageHint || "classic motorcycle",
     timeAgo: "1h ago",
     isPromoted: true
   },
@@ -23,8 +20,6 @@ const featuredListings = [
     price: "₹85,00,000",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-villa/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageHint || "luxury villa",
     timeAgo: "4h ago"
   },
   {
@@ -33,8 +28,6 @@ const featuredListings = [
     price: "₹1,15,000",
     location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageUrl || "https://picsum.photos/seed/kerala-iphone/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageHint || "iphone titanium",
     timeAgo: "2h ago"
   },
   {
@@ -43,8 +36,6 @@ const featuredListings = [
     price: "₹4,500",
     location: "Thrissur, Kerala",
     category: "Apparel",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-saree/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageHint || "indian saree",
     timeAgo: "12h ago",
     isPromoted: true
   },
@@ -54,8 +45,6 @@ const featuredListings = [
     price: "₹25,000",
     location: "Kollam, Kerala",
     category: "Home & Garden",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-furniture/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageHint || "wooden table",
     timeAgo: "8h ago"
   },
   {
@@ -64,8 +53,6 @@ const featuredListings = [
     price: "₹8,000",
     location: "Palakkad, Kerala",
     category: "Pets",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageUrl || "https://picsum.photos/seed/kerala-kitten/1200/800",
-    imageHint: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageHint || "persian kitten",
     timeAgo: "1d ago"
   }
 ];

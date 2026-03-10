@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -15,12 +14,13 @@ import {
   ShieldCheck,
   AlertTriangle,
   User,
-  ExternalLink,
-  Camera
+  Info,
+  TrendingUp,
+  Award,
+  Zap,
+  CheckCircle2
 } from "lucide-react";
-import Image from "next/image";
 import { useMemo } from "react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const allListings = [
   {
@@ -30,12 +30,11 @@ const allListings = [
     description: "Well maintained Royal Enfield Classic 350 (Stealth Black). Just 8,000 kms driven. Single owner, all service records available at authorized showroom. Includes aftermarket leg guards and premium seat covers. \n\nReason for selling: Moving abroad. \n\nPrice slightly negotiable for immediate buyers. Located near Lulu Mall, Kochi.",
     location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageHint || "",
     timeAgo: "1h ago",
     condition: "Used - Like New",
     postedAt: "Oct 25, 2024",
-    seller: { name: "Rahul K.", rating: 4.9, joined: "Jan 2022" }
+    seller: { name: "Rahul K.", rating: 4.9, joined: "Jan 2022" },
+    insight: "The Classic 350 is currently the #1 most searched motorcycle in Ernakulam district."
   },
   {
     id: "2",
@@ -44,12 +43,11 @@ const allListings = [
     description: "Modern 3BHK Villa in a gated community at Kazhakkoottam. 2200 sq.ft built-up area on 5 cents land. Private swimming pool, modular kitchen, and centralized AC in all bedrooms. \n\nWalking distance to Technopark. 24/7 security and water supply. Excellent investment opportunity or family home.",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageHint || "",
     timeAgo: "4h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
-    seller: { name: "Abhilash Nair", rating: 5.0, joined: "Jun 2019" }
+    seller: { name: "Abhilash Nair", rating: 5.0, joined: "Jun 2019" },
+    insight: "Properties in Kazhakkoottam have seen a 12% value increase since last year due to IT expansion."
   },
   {
     id: "3",
@@ -58,12 +56,11 @@ const allListings = [
     description: "Brand new, unopened iPhone 15 Pro Max. Natural Titanium color. Indian unit with full warranty. Bill available. Received as a gift, already using one. \n\nNo exchange. Fixed price.",
     location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageHint || "",
     timeAgo: "2h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
-    seller: { name: "Digital Hub", rating: 4.8, joined: "Feb 2023" }
+    seller: { name: "Digital Hub", rating: 4.8, joined: "Feb 2023" },
+    insight: "This price is 5% lower than the average retail price in Kozhikode electronic markets."
   },
   {
     id: "4",
@@ -72,12 +69,11 @@ const allListings = [
     description: "Handwoven premium Kasavu saree with golden tissue border. 100% pure cotton. Perfect for weddings and festivals. Includes unstitched blouse piece. \n\nAuthentic Kuthampully handloom.",
     location: "Thrissur, Kerala",
     category: "Apparel",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageHint || "",
     timeAgo: "12h ago",
     condition: "New",
     postedAt: "Oct 24, 2024",
-    seller: { name: "Lakshmi Handlooms", rating: 4.7, joined: "Sep 2020" }
+    seller: { name: "Lakshmi Handlooms", rating: 4.7, joined: "Sep 2020" },
+    insight: "Authentic Kuthampully sarees are currently in high demand for the upcoming festive season."
   }
 ];
 
@@ -95,17 +91,17 @@ export default function ListingDetailsPage() {
         <Button 
           variant="ghost" 
           onClick={() => router.back()}
-          className="hover:bg-primary/5 text-primary w-fit"
+          className="hover:bg-primary/5 text-primary w-fit rounded-xl"
         >
           <ChevronLeft className="mr-2 h-4 w-4" />
-          Back to Kerala listings
+          Back to Results
         </Button>
         <div className="flex gap-2">
-          <Button variant="outline" className="rounded-xl gap-2 font-medium">
+          <Button variant="outline" className="rounded-xl gap-2 font-bold text-xs uppercase tracking-widest">
             <Share2 className="h-4 w-4" />
             Share
           </Button>
-          <Button variant="outline" className="rounded-xl gap-2 font-medium">
+          <Button variant="outline" className="rounded-xl gap-2 font-bold text-xs uppercase tracking-widest text-primary border-primary/20">
             <Heart className="h-4 w-4" />
             Save
           </Button>
@@ -114,52 +110,78 @@ export default function ListingDetailsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="relative aspect-video rounded-3xl overflow-hidden border shadow-xl bg-muted group">
-            <Image 
-              src={listing.imageUrl} 
-              alt={listing.title}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              priority
-              data-ai-hint={listing.imageHint}
-            />
-            <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white p-2 rounded-xl">
-               <Camera className="h-5 w-5" />
+          {/* Replacement for Image: Dynamic Data Visualization/Header */}
+          <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Zap className="h-64 w-64 rotate-12" />
             </div>
-            <div className="absolute bottom-6 left-6 px-6 py-3 bg-primary backdrop-blur-md rounded-2xl text-white font-extrabold text-3xl shadow-2xl">
-              {listing.price}
+            
+            <div className="relative z-10 space-y-6">
+              <div className="flex items-center gap-3">
+                <Badge className="bg-white/20 hover:bg-white/30 text-white border-none backdrop-blur-md px-4 py-1 rounded-full font-bold">
+                  {listing.category}
+                </Badge>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-white/80">
+                  <TrendingUp className="h-4 w-4" />
+                  HIGH INTEREST ITEM
+                </div>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tight max-w-lg">
+                {listing.title}
+              </h1>
+              
+              <div className="pt-4">
+                <p className="text-5xl font-black tracking-tighter">
+                  {listing.price}
+                </p>
+                <p className="text-white/60 text-sm font-bold mt-2 flex items-center gap-2">
+                  <Award className="h-4 w-4" />
+                  Estimated Fair Market Value in {listing.location.split(',')[0]}
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="flex flex-col gap-4 border-b pb-8">
-              <h1 className="text-4xl font-extrabold tracking-tight leading-tight">{listing.title}</h1>
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground font-medium">
-                <div className="flex items-center gap-2 bg-primary/5 px-3 py-1.5 rounded-full">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span className="text-primary">{listing.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  <span>Posted {listing.timeAgo}</span>
-                </div>
-                <Badge variant="secondary" className="px-4 py-1.5 rounded-full text-xs uppercase tracking-widest border-none">
-                  {listing.category}
-                </Badge>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="border-none shadow-sm bg-primary/5 rounded-3xl">
+              <CardContent className="p-6 space-y-4">
+                <h3 className="font-bold flex items-center gap-2 text-primary">
+                  <Info className="h-5 w-5" />
+                  Local Insight
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed italic">
+                  "{listing.insight}"
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-none shadow-sm bg-accent/10 rounded-3xl">
+              <CardContent className="p-6 space-y-4">
+                <h3 className="font-bold flex items-center gap-2 text-accent-foreground">
+                  <CheckCircle2 className="h-5 w-5" />
+                  Vibe Score: 9.8/10
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Based on demand in Kerala, this listing is currently performing better than 95% of other {listing.category} ads.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
 
+          <div className="space-y-8">
             <div className="prose prose-lg max-w-none">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <ExternalLink className="h-5 w-5 text-primary" />
-                Description
+              <h3 className="text-2xl font-black mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                  <Info className="h-5 w-5 text-primary" />
+                </div>
+                Detailed Description
               </h3>
-              <p className="whitespace-pre-line text-muted-foreground leading-relaxed text-lg">
+              <p className="whitespace-pre-line text-muted-foreground leading-relaxed text-lg bg-white p-8 rounded-[2rem] border shadow-sm">
                 {listing.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-y">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-10 border-y border-dashed">
               <div className="space-y-1">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Condition</p>
                 <p className="font-bold text-lg">{listing.condition}</p>
@@ -181,69 +203,71 @@ export default function ListingDetailsPage() {
         </div>
 
         <div className="space-y-6">
-          <Card className="border-none shadow-2xl rounded-3xl overflow-hidden bg-white">
+          <Card className="border-none shadow-2xl rounded-[2.5rem] overflow-hidden bg-white">
             <CardContent className="p-8 space-y-8">
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-muted/30">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
-                  <User className="h-7 w-7 text-primary" />
+              <div className="flex items-center gap-4 p-5 rounded-3xl bg-muted/30 border border-muted">
+                <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+                  <User className="h-7 w-7 text-white" />
                 </div>
                 <div>
                   <h3 className="font-bold text-xl">{listing.seller.name}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                     <ShieldCheck className="h-4 w-4 text-green-500" />
-                    <span className="font-medium text-green-600">Verified Kerala Seller</span>
+                    <span className="font-bold text-green-600">VERIFIED KERALA SELLER</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <Button className="w-full h-14 rounded-2xl text-lg font-bold shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all">
-                  <MessageCircle className="mr-2 h-6 w-6" />
+                <Button className="w-full h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all uppercase tracking-widest">
+                  <MessageCircle className="mr-3 h-6 w-6" />
                   Contact Seller
                 </Button>
-                <Button variant="outline" className="w-full h-14 rounded-2xl font-bold border-2 hover:bg-muted/50 transition-colors">
+                <Button variant="outline" className="w-full h-16 rounded-2xl font-black border-2 hover:bg-muted/50 transition-colors uppercase tracking-widest">
                   Make an Offer
                 </Button>
               </div>
 
-              <div className="pt-6 border-t space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Safety Guidelines</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                    <span className="text-sm text-muted-foreground font-medium">Inspect the item in person before paying.</span>
+              <div className="pt-6 border-t border-dashed space-y-4">
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Regional Safety Protocol</h4>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="h-3 w-3 text-green-600" />
+                    </div>
+                    <span className="text-sm text-muted-foreground font-medium">Meet in public landmarks (e.g. Malls, Metro Stations).</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                    <span className="text-sm text-muted-foreground font-medium">Meet in a safe, public place.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
-                    <span className="text-sm text-muted-foreground font-medium">Avoid high-value cash transactions alone.</span>
+                  <li className="flex items-start gap-4">
+                    <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="h-3 w-3 text-green-600" />
+                    </div>
+                    <span className="text-sm text-muted-foreground font-medium">Verify Kerala identity documents for high-value items.</span>
                   </li>
                 </ul>
               </div>
               
-              <Button variant="ghost" className="w-full text-destructive hover:text-destructive hover:bg-destructive/5 text-xs font-bold gap-2">
+              <Button variant="ghost" className="w-full text-destructive hover:text-destructive hover:bg-destructive/5 text-[10px] font-black tracking-widest gap-2">
                 <AlertTriangle className="h-4 w-4" />
                 REPORT THIS AD
               </Button>
             </CardContent>
           </Card>
 
-          <div className="bg-white rounded-3xl p-8 border-none shadow-xl">
-            <h4 className="font-bold text-lg mb-6 flex items-center gap-2">
+          <div className="bg-white rounded-[2.5rem] p-8 border-none shadow-xl">
+            <h4 className="font-black text-lg mb-6 flex items-center gap-3">
               <MapPin className="h-5 w-5 text-primary" />
-              Area Information
+              Location Context
             </h4>
-            <div className="aspect-square bg-muted rounded-2xl relative overflow-hidden border">
+            <div className="aspect-square bg-muted/50 rounded-3xl relative overflow-hidden border border-dashed border-primary/20">
                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/20">
-                      <MapPin className="h-8 w-8 text-primary" />
+                  <div className="text-center p-6 space-y-4">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                      <MapPin className="h-10 w-10 text-primary" />
                     </div>
-                    <p className="text-lg font-bold">{listing.location}</p>
-                    <p className="text-xs text-muted-foreground mt-2 font-medium">Verified local listing</p>
+                    <div>
+                      <p className="text-xl font-black tracking-tight">{listing.location}</p>
+                      <p className="text-[10px] text-muted-foreground mt-2 font-black uppercase tracking-widest">Active Region</p>
+                    </div>
                   </div>
                </div>
             </div>
