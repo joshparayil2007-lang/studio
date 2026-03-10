@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { CategoryNav } from "@/components/listings/CategoryNav";
 import { ListingCard } from "@/components/listings/ListingCard";
@@ -13,8 +12,8 @@ const featuredListings = [
     price: "₹1,85,000",
     location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-bike/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageHint || "classic motorcycle",
     timeAgo: "1h ago",
     isPromoted: true
   },
@@ -24,8 +23,8 @@ const featuredListings = [
     price: "₹85,00,000",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-villa/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageHint || "luxury villa",
     timeAgo: "4h ago"
   },
   {
@@ -34,8 +33,8 @@ const featuredListings = [
     price: "₹1,15,000",
     location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageUrl || "https://picsum.photos/seed/kerala-iphone/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageHint || "iphone titanium",
     timeAgo: "2h ago"
   },
   {
@@ -44,8 +43,8 @@ const featuredListings = [
     price: "₹4,500",
     location: "Thrissur, Kerala",
     category: "Apparel",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-saree/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageHint || "indian saree",
     timeAgo: "12h ago",
     isPromoted: true
   },
@@ -55,8 +54,8 @@ const featuredListings = [
     price: "₹25,000",
     location: "Kollam, Kerala",
     category: "Home & Garden",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageUrl || "https://picsum.photos/seed/kerala-furniture/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'furniture-kerala')?.imageHint || "wooden table",
     timeAgo: "8h ago"
   },
   {
@@ -65,8 +64,8 @@ const featuredListings = [
     price: "₹8,000",
     location: "Palakkad, Kerala",
     category: "Pets",
-    imageUrl: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageUrl || "",
-    imageHint: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageHint || "",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageUrl || "https://picsum.photos/seed/kerala-kitten/1200/800",
+    imageHint: PlaceHolderImages.find(img => img.id === 'kitten-listing')?.imageHint || "persian kitten",
     timeAgo: "1d ago"
   }
 ];
@@ -87,8 +86,10 @@ export default function Home() {
             </div>
             <h2 className="text-3xl font-bold tracking-tight">Fresh near Kerala</h2>
           </div>
-          <Button variant="ghost" className="text-primary font-semibold hover:text-primary/80 group">
-            Browse all listings <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          <Button variant="ghost" className="text-primary font-semibold hover:text-primary/80 group" asChild>
+            <a href="/listings">
+              Browse all listings <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </Button>
         </div>
 

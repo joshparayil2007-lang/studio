@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -30,17 +29,22 @@ export function ListingCard({
   timeAgo,
   isPromoted
 }: ListingCardProps) {
+  // Defensive check for empty image URLs to prevent Next.js hydration/render errors
+  const displayImageUrl = imageUrl && imageUrl.trim() !== "" 
+    ? imageUrl 
+    : "https://picsum.photos/seed/placeholder/600/400";
+
   return (
     <Link href={`/listings/${id}`} className="group block">
       <Card className="overflow-hidden h-full border-none shadow-sm hover:shadow-lg transition-all duration-300 bg-white group-hover:-translate-y-1">
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
-            src={imageUrl}
+            src={displayImageUrl}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            data-ai-hint={imageHint}
+            data-ai-hint={imageHint || "classified listing"}
           />
           {isPromoted && (
             <Badge className="absolute top-2 left-2 bg-accent text-accent-foreground hover:bg-accent border-none font-bold">
