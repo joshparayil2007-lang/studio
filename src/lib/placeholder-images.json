@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "electronics",
+      "description": "Modern gadgets and electronic devices",
+      "imageUrl": "https://picsum.photos/seed/elec1/600/400",
+      "imageHint": "electronics gadgets"
+    },
+    {
+      "id": "vehicles",
+      "description": "Clean modern car in a city setting",
+      "imageUrl": "https://picsum.photos/seed/car1/600/400",
+      "imageHint": "modern car"
+    },
+    {
+      "id": "real-estate",
+      "description": "Cozy modern apartment interior",
+      "imageUrl": "https://picsum.photos/seed/home1/600/400",
+      "imageHint": "modern apartment"
+    },
+    {
+      "id": "apparel",
+      "description": "Stylish clothing and accessories",
+      "imageUrl": "https://picsum.photos/seed/wear1/600/400",
+      "imageHint": "stylish clothes"
+    },
+    {
+      "id": "home-garden",
+      "description": "Beautiful garden furniture and plants",
+      "imageUrl": "https://picsum.photos/seed/garden1/600/400",
+      "imageHint": "garden patio"
+    }
+  ]
 }
