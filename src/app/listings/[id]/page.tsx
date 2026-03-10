@@ -18,9 +18,32 @@ import {
   TrendingUp,
   Award,
   Zap,
-  CheckCircle2
+  CheckCircle2,
+  Car, 
+  Home, 
+  Smartphone, 
+  Shirt, 
+  Briefcase, 
+  Dog, 
+  Music, 
+  Hammer, 
+  Coffee, 
+  Package
 } from "lucide-react";
 import { useMemo } from "react";
+
+const categoryIcons: Record<string, any> = {
+  "Vehicles": Car,
+  "Real Estate": Home,
+  "Electronics": Smartphone,
+  "Apparel": Shirt,
+  "Jobs": Briefcase,
+  "Pets": Dog,
+  "Collectibles": Music,
+  "Home & Garden": Hammer,
+  "Services": Coffee,
+  "Free Stuff": Package,
+};
 
 const allListings = [
   {
@@ -85,6 +108,8 @@ export default function ListingDetailsPage() {
     return allListings.find(item => item.id === id) || allListings[0];
   }, [id]);
 
+  const CategoryIcon = categoryIcons[listing.category] || Zap;
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -113,7 +138,7 @@ export default function ListingDetailsPage() {
           {/* Replacement for Image: Dynamic Data Visualization/Header */}
           <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-10">
-              <Zap className="h-64 w-64 rotate-12" />
+              <CategoryIcon className="h-64 w-64 rotate-12" />
             </div>
             
             <div className="relative z-10 space-y-6">

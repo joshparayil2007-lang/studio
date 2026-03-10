@@ -2,7 +2,24 @@
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Clock, Heart, Users, Zap, ShieldCheck } from "lucide-react";
+import { 
+  MapPin, 
+  Clock, 
+  Heart, 
+  Users, 
+  ShieldCheck,
+  Car, 
+  Home, 
+  Smartphone, 
+  Shirt, 
+  Briefcase, 
+  Dog, 
+  Music, 
+  Hammer, 
+  Coffee, 
+  Package,
+  Zap
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,6 +32,19 @@ interface ListingCardProps {
   timeAgo: string;
   isPromoted?: boolean;
 }
+
+const categoryIcons: Record<string, any> = {
+  "Vehicles": Car,
+  "Real Estate": Home,
+  "Electronics": Smartphone,
+  "Apparel": Shirt,
+  "Jobs": Briefcase,
+  "Pets": Dog,
+  "Collectibles": Music,
+  "Home & Garden": Hammer,
+  "Services": Coffee,
+  "Free Stuff": Package,
+};
 
 export function ListingCard({
   id,
@@ -32,6 +62,8 @@ export function ListingCard({
     setViewers(Math.floor(Math.random() * 12) + 2);
   }, []);
 
+  const CategoryIcon = categoryIcons[category] || Zap;
+
   return (
     <Link href={`/listings/${id}`} className="group block">
       <Card className="overflow-hidden h-full border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white group-hover:-translate-y-1">
@@ -39,7 +71,7 @@ export function ListingCard({
         <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center border-b p-6">
           <div className="text-center space-y-3">
             <div className="w-16 h-16 bg-white rounded-3xl shadow-lg flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform duration-500">
-              <Zap className="h-8 w-8 fill-current" />
+              <CategoryIcon className="h-8 w-8" />
             </div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{category}</p>
           </div>
