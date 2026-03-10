@@ -3,51 +3,51 @@
   "placeholderImages": [
     {
       "id": "bike-kerala",
-      "description": "Royal Enfield Classic 350 motorcycle",
-      "imageUrl": "https://picsum.photos/seed/kerala-bike/1200/800",
-      "imageHint": "classic motorcycle"
+      "description": "Black Royal Enfield Classic 350 motorcycle parked on a street",
+      "imageUrl": "https://picsum.photos/seed/re350/1200/800",
+      "imageHint": "Royal Enfield"
     },
     {
       "id": "villa-kerala",
-      "description": "Luxury Villa with pool in Kerala",
-      "imageUrl": "https://picsum.photos/seed/kerala-villa/1200/800",
-      "imageHint": "luxury villa"
+      "description": "Modern Kerala style villa with lush green surroundings",
+      "imageUrl": "https://picsum.photos/seed/kervilla/1200/800",
+      "imageHint": "Kerala house"
     },
     {
       "id": "iphone-listing",
-      "description": "iPhone 15 Pro Max Titanium",
-      "imageUrl": "https://picsum.photos/seed/kerala-iphone/1200/800",
-      "imageHint": "iphone titanium"
+      "description": "Natural Titanium iPhone 15 Pro Max in its original box",
+      "imageUrl": "https://picsum.photos/seed/ip15titan/1200/800",
+      "imageHint": "iPhone 15"
     },
     {
       "id": "saree-kerala",
-      "description": "Traditional Kerala Kasavu Saree",
-      "imageUrl": "https://picsum.photos/seed/kerala-saree/1200/800",
-      "imageHint": "indian saree"
+      "description": "Elegant traditional white Kerala Kasavu saree with gold border",
+      "imageUrl": "https://picsum.photos/seed/karsaree/1200/800",
+      "imageHint": "Kerala saree"
     },
     {
       "id": "furniture-kerala",
-      "description": "Teak wood dining set",
-      "imageUrl": "https://picsum.photos/seed/kerala-furniture/1200/800",
-      "imageHint": "wooden table"
+      "description": "Handcrafted dark teak wood dining table with chairs",
+      "imageUrl": "https://picsum.photos/seed/teakfurn/1200/800",
+      "imageHint": "Teak furniture"
     },
     {
       "id": "kitten-listing",
-      "description": "Persian Kittens for adoption",
-      "imageUrl": "https://picsum.photos/seed/kerala-kitten/1200/800",
-      "imageHint": "persian kitten"
+      "description": "Fluffy white Persian kitten sitting on a soft surface",
+      "imageUrl": "https://picsum.photos/seed/perscat/1200/800",
+      "imageHint": "Persian cat"
     },
     {
       "id": "car-kerala",
-      "description": "Modern SUV in Alappuzha",
-      "imageUrl": "https://picsum.photos/seed/kerala-car/1200/800",
-      "imageHint": "modern suv"
+      "description": "Silver modern SUV parked in a driveway",
+      "imageUrl": "https://picsum.photos/seed/suvcar/1200/800",
+      "imageHint": "SUV car"
     },
     {
       "id": "farm-kerala",
-      "description": "Coconut grove farm land",
-      "imageUrl": "https://picsum.photos/seed/kerala-farm/1200/800",
-      "imageHint": "coconut farm"
+      "description": "Scenic view of a tropical coconut grove farm in Kerala",
+      "imageUrl": "https://picsum.photos/seed/cocofarm/1200/800",
+      "imageHint": "Coconut plantation"
     }
   ]
 }
