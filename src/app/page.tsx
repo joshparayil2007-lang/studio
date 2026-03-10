@@ -11,6 +11,7 @@ const featuredListings = [
     price: "₹1,85,000",
     location: "Kochi, Kerala",
     category: "Vehicles",
+    type: "Bike",
     timeAgo: "1h ago",
     isPromoted: true
   },
@@ -20,6 +21,7 @@ const featuredListings = [
     price: "₹85,00,000",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
+    type: "Villa",
     timeAgo: "4h ago"
   },
   {
@@ -28,6 +30,7 @@ const featuredListings = [
     price: "₹1,15,000",
     location: "Kozhikode, Kerala",
     category: "Electronics",
+    type: "Smartphone",
     timeAgo: "2h ago"
   },
   {
@@ -36,6 +39,7 @@ const featuredListings = [
     price: "₹4,500",
     location: "Thrissur, Kerala",
     category: "Apparel",
+    type: "Saree",
     timeAgo: "12h ago",
     isPromoted: true
   },
@@ -45,6 +49,7 @@ const featuredListings = [
     price: "₹25,000",
     location: "Kollam, Kerala",
     category: "Home & Garden",
+    type: "Furniture",
     timeAgo: "8h ago"
   },
   {
@@ -53,6 +58,7 @@ const featuredListings = [
     price: "₹8,000",
     location: "Palakkad, Kerala",
     category: "Pets",
+    type: "Cat",
     timeAgo: "1d ago"
   }
 ];

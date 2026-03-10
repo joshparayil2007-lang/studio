@@ -28,7 +28,8 @@ import {
   Music, 
   Hammer, 
   Coffee, 
-  Package
+  Package,
+  Tag
 } from "lucide-react";
 import { useMemo } from "react";
 
@@ -53,6 +54,7 @@ const allListings = [
     description: "Well maintained Royal Enfield Classic 350 (Stealth Black). Just 8,000 kms driven. Single owner, all service records available at authorized showroom. Includes aftermarket leg guards and premium seat covers. \n\nReason for selling: Moving abroad. \n\nPrice slightly negotiable for immediate buyers. Located near Lulu Mall, Kochi.",
     location: "Kochi, Kerala",
     category: "Vehicles",
+    type: "Bike",
     timeAgo: "1h ago",
     condition: "Used - Like New",
     postedAt: "Oct 25, 2024",
@@ -66,6 +68,7 @@ const allListings = [
     description: "Modern 3BHK Villa in a gated community at Kazhakkoottam. 2200 sq.ft built-up area on 5 cents land. Private swimming pool, modular kitchen, and centralized AC in all bedrooms. \n\nWalking distance to Technopark. 24/7 security and water supply. Excellent investment opportunity or family home.",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
+    type: "Villa",
     timeAgo: "4h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
@@ -79,6 +82,7 @@ const allListings = [
     description: "Brand new, unopened iPhone 15 Pro Max. Natural Titanium color. Indian unit with full warranty. Bill available. Received as a gift, already using one. \n\nNo exchange. Fixed price.",
     location: "Kozhikode, Kerala",
     category: "Electronics",
+    type: "Smartphone",
     timeAgo: "2h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
@@ -92,6 +96,7 @@ const allListings = [
     description: "Handwoven premium Kasavu saree with golden tissue border. 100% pure cotton. Perfect for weddings and festivals. Includes unstitched blouse piece. \n\nAuthentic Kuthampully handloom.",
     location: "Thrissur, Kerala",
     category: "Apparel",
+    type: "Saree",
     timeAgo: "12h ago",
     condition: "New",
     postedAt: "Oct 24, 2024",
@@ -135,7 +140,6 @@ export default function ListingDetailsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          {/* Replacement for Image: Dynamic Data Visualization/Header */}
           <div className="p-10 rounded-[2.5rem] bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-10">
               <CategoryIcon className="h-64 w-64 rotate-12" />
@@ -146,6 +150,11 @@ export default function ListingDetailsPage() {
                 <Badge className="bg-white/20 hover:bg-white/30 text-white border-none backdrop-blur-md px-4 py-1 rounded-full font-bold">
                   {listing.category}
                 </Badge>
+                {listing.type && (
+                  <Badge variant="outline" className="border-white/40 text-white bg-white/5 backdrop-blur-sm px-4 py-1 rounded-full font-bold">
+                    {listing.type}
+                  </Badge>
+                )}
                 <div className="flex items-center gap-1.5 text-xs font-bold text-white/80">
                   <TrendingUp className="h-4 w-4" />
                   HIGH INTEREST ITEM
@@ -208,8 +217,8 @@ export default function ListingDetailsPage() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 py-10 border-y border-dashed">
               <div className="space-y-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Condition</p>
-                <p className="font-bold text-lg">{listing.condition}</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Type</p>
+                <p className="font-bold text-lg">{listing.type || "Other"}</p>
               </div>
               <div className="space-y-1">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Category</p>

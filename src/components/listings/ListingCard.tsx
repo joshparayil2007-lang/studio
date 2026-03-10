@@ -18,7 +18,8 @@ import {
   Hammer, 
   Coffee, 
   Package,
-  Zap
+  Zap,
+  Tag
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -29,6 +30,7 @@ interface ListingCardProps {
   price: string;
   location: string;
   category: string;
+  type?: string;
   timeAgo: string;
   isPromoted?: boolean;
 }
@@ -52,6 +54,7 @@ export function ListingCard({
   price,
   location,
   category,
+  type,
   timeAgo,
   isPromoted
 }: ListingCardProps) {
@@ -73,11 +76,18 @@ export function ListingCard({
             <div className="w-16 h-16 bg-white rounded-3xl shadow-lg flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform duration-500">
               <CategoryIcon className="h-8 w-8" />
             </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{category}</p>
+            <div className="flex flex-col items-center">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">{category}</p>
+              {type && (
+                <Badge variant="outline" className="mt-1 text-[9px] font-bold uppercase py-0 px-2 h-4 border-primary/20 text-primary">
+                  {type}
+                </Badge>
+              )}
+            </div>
           </div>
 
           {isPromoted && (
-            <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground hover:bg-accent border-none font-bold animate-pulse">
+            <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground hover:bg-accent border-none font-bold animate-pulse text-[10px]">
               TRENDING
             </Badge>
           )}
@@ -119,7 +129,7 @@ export function ListingCard({
             <span>{timeAgo}</span>
           </div>
           <div className="flex items-center gap-1 text-green-600">
-            <ShieldCheck className="h-3 w-3" />
+            <ShieldCheck className="h-3.5 w-3.5" />
             VERIFIED
           </div>
         </CardFooter>
