@@ -1,0 +1,53 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "bike-kerala",
+      "description": "Royal Enfield Classic 350 motorcycle",
+      "imageUrl": "https://picsum.photos/seed/kerala-bike/1200/800",
+      "imageHint": "classic motorcycle"
+    },
+    {
+      "id": "villa-kerala",
+      "description": "Luxury Villa with pool in Kerala",
+      "imageUrl": "https://picsum.photos/seed/kerala-villa/1200/800",
+      "imageHint": "luxury villa"
+    },
+    {
+      "id": "iphone-listing",
+      "description": "iPhone 15 Pro Max Titanium",
+      "imageUrl": "https://picsum.photos/seed/kerala-iphone/1200/800",
+      "imageHint": "iphone titanium"
+    },
+    {
+      "id": "saree-kerala",
+      "description": "Traditional Kerala Kasavu Saree",
+      "imageUrl": "https://picsum.photos/seed/kerala-saree/1200/800",
+      "imageHint": "indian saree"
+    },
+    {
+      "id": "furniture-kerala",
+      "description": "Teak wood dining set",
+      "imageUrl": "https://picsum.photos/seed/kerala-furniture/1200/800",
+      "imageHint": "wooden table"
+    },
+    {
+      "id": "kitten-listing",
+      "description": "Persian Kittens for adoption",
+      "imageUrl": "https://picsum.photos/seed/kerala-kitten/1200/800",
+      "imageHint": "persian kitten"
+    },
+    {
+      "id": "car-kerala",
+      "description": "Modern SUV in Alappuzha",
+      "imageUrl": "https://picsum.photos/seed/kerala-car/1200/800",
+      "imageHint": "modern suv"
+    },
+    {
+      "id": "farm-kerala",
+      "description": "Coconut grove farm land",
+      "imageUrl": "https://picsum.photos/seed/kerala-farm/1200/800",
+      "imageHint": "coconut farm"
+    }
+  ]
+}

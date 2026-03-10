@@ -14,6 +14,7 @@ interface ListingCardProps {
   location: string;
   category: string;
   imageUrl: string;
+  imageHint?: string;
   timeAgo: string;
   isPromoted?: boolean;
 }
@@ -25,6 +26,7 @@ export function ListingCard({
   location,
   category,
   imageUrl,
+  imageHint,
   timeAgo,
   isPromoted
 }: ListingCardProps) {
@@ -38,6 +40,7 @@ export function ListingCard({
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            data-ai-hint={imageHint}
           />
           {isPromoted && (
             <Badge className="absolute top-2 left-2 bg-accent text-accent-foreground hover:bg-accent border-none font-bold">

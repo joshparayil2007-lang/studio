@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useMemo } from "react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const allListings = [
   {
@@ -28,7 +30,8 @@ const allListings = [
     description: "Well maintained Royal Enfield Classic 350 (Stealth Black). Just 8,000 kms driven. Single owner, all service records available at authorized showroom. Includes aftermarket leg guards and premium seat covers. \n\nReason for selling: Moving abroad. \n\nPrice slightly negotiable for immediate buyers. Located near Lulu Mall, Kochi.",
     location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: "https://picsum.photos/seed/bike1/1200/800",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageUrl || "",
+    imageHint: PlaceHolderImages.find(img => img.id === 'bike-kerala')?.imageHint || "",
     timeAgo: "1h ago",
     condition: "Used - Like New",
     postedAt: "Oct 25, 2024",
@@ -41,7 +44,8 @@ const allListings = [
     description: "Modern 3BHK Villa in a gated community at Kazhakkoottam. 2200 sq.ft built-up area on 5 cents land. Private swimming pool, modular kitchen, and centralized AC in all bedrooms. \n\nWalking distance to Technopark. 24/7 security and water supply. Excellent investment opportunity or family home.",
     location: "Trivandrum, Kerala",
     category: "Real Estate",
-    imageUrl: "https://picsum.photos/seed/villa1/1200/800",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageUrl || "",
+    imageHint: PlaceHolderImages.find(img => img.id === 'villa-kerala')?.imageHint || "",
     timeAgo: "4h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
@@ -54,7 +58,8 @@ const allListings = [
     description: "Brand new, unopened iPhone 15 Pro Max. Natural Titanium color. Indian unit with full warranty. Bill available. Received as a gift, already using one. \n\nNo exchange. Fixed price.",
     location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: "https://picsum.photos/seed/phone1/1200/800",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageUrl || "",
+    imageHint: PlaceHolderImages.find(img => img.id === 'iphone-listing')?.imageHint || "",
     timeAgo: "2h ago",
     condition: "New",
     postedAt: "Oct 25, 2024",
@@ -67,7 +72,8 @@ const allListings = [
     description: "Handwoven premium Kasavu saree with golden tissue border. 100% pure cotton. Perfect for weddings and festivals. Includes unstitched blouse piece. \n\nAuthentic Kuthampully handloom.",
     location: "Thrissur, Kerala",
     category: "Apparel",
-    imageUrl: "https://picsum.photos/seed/saree1/1200/800",
+    imageUrl: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageUrl || "",
+    imageHint: PlaceHolderImages.find(img => img.id === 'saree-kerala')?.imageHint || "",
     timeAgo: "12h ago",
     condition: "New",
     postedAt: "Oct 24, 2024",
@@ -115,6 +121,7 @@ export default function ListingDetailsPage() {
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               priority
+              data-ai-hint={listing.imageHint}
             />
             <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-white p-2 rounded-xl">
                <Camera className="h-5 w-5" />
