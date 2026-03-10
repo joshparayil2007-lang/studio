@@ -19,37 +19,34 @@ A modernized, AI-enhanced classifieds platform specifically tailored for the Ker
 - **AI**: Genkit (Google Gemini)
 - **Icons**: Lucide React
 
-## Getting Started
+## How to Publish to your GitHub
 
-To publish this to your GitHub account:
+Since I am an AI, you will need to perform the final push to your account. Follow these steps:
 
-1. **Create a new repository** on [GitHub](https://github.com/new).
-2. **Push your code**:
+1. **Create a new repository** on [GitHub](https://github.com/new). Name it `local-listings-kerala`.
+2. **Open your terminal** in this project's root folder.
+3. **Initialize and Push**:
    ```bash
    git init
-   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
    git add .
    git commit -m "Initial commit of LocalListings Kerala"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/local-listings-kerala.git
    git push -u origin main
    ```
+   *(Replace YOUR_GITHUB_USERNAME with your actual username)*
 
-3. **Setup Environment**:
-   Ensure you have your `GOOGLE_GENAI_API_KEY` set in your environment variables for the AI features to work.
-
-4. **Install and Run**:
-   ```bash
-   npm install
-   npm run dev
-   ```
+4. **Setup Environment**:
+   In your GitHub Repository Settings, go to **Secrets and variables > Actions** and add your `GOOGLE_GENAI_API_KEY`.
 
 ## Deployment
 
 This project is optimized for **Firebase App Hosting**:
-1. Push your code to your GitHub repository.
-2. Go to the [Firebase Console](https://console.firebase.google.com/).
-3. Select "App Hosting" from the left sidebar.
-4. Click "Get Started", connect your GitHub account, and select this repository.
-5. Firebase will automatically build and host your app on every push to your main branch.
+1. Go to the [Firebase Console](https://console.firebase.google.com/).
+2. Select your project.
+3. Select **App Hosting** from the left sidebar.
+4. Click "Get Started", connect your GitHub account, and select the repository you just created.
+5. Firebase will automatically build and host your app. It will provide you with a unique URL once finished.
 
 ---
 Project Contact: joshparayil2007@gmail.com
