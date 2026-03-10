@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
@@ -19,61 +18,60 @@ import {
   Camera
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useMemo } from "react";
 
 const allListings = [
   {
     id: "1",
-    title: "2019 Tesla Model 3 Performance",
-    price: "$34,500",
-    description: "Mint condition Tesla Model 3 Performance. Only 15,000 miles. Always garage kept and hand washed. Includes Full Self-Driving capability ($12k value). Upgraded 20\" Performance Wheels, carbon fiber spoiler, and aluminum alloy pedals. \n\nAcceleration: 0-60 mph in 3.1s. Range: Up to 310 miles. \n\nSerious inquiries only. No lowball offers.",
-    location: "Downtown, Seattle",
+    title: "2022 Royal Enfield Classic 350",
+    price: "₹1,85,000",
+    description: "Well maintained Royal Enfield Classic 350 (Stealth Black). Just 8,000 kms driven. Single owner, all service records available at authorized showroom. Includes aftermarket leg guards and premium seat covers. \n\nReason for selling: Moving abroad. \n\nPrice slightly negotiable for immediate buyers. Located near Lulu Mall, Kochi.",
+    location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: "https://picsum.photos/seed/car1/1200/800",
-    timeAgo: "2h ago",
+    imageUrl: "https://picsum.photos/seed/bike1/1200/800",
+    timeAgo: "1h ago",
     condition: "Used - Like New",
-    postedAt: "Oct 24, 2024",
-    seller: { name: "Alex J.", rating: 4.8, joined: "Mar 2021" }
+    postedAt: "Oct 25, 2024",
+    seller: { name: "Rahul K.", rating: 4.9, joined: "Jan 2022" }
   },
   {
     id: "2",
-    title: "Vintage Mahogany Dining Table",
-    price: "$450",
-    description: "Solid mahogany dining table from the 1960s. Seats 6 comfortably, includes two 12-inch leaves for extra seating. Beautiful wood grain with minor surface scratches typical for its age. \n\nDimensions: 60\"L x 40\"W x 30\"H. \n\nPick up only in Ballard. Cash or Venmo preferred.",
-    location: "Ballard, WA",
-    category: "Home & Garden",
-    imageUrl: "https://picsum.photos/seed/garden1/1200/800",
-    timeAgo: "5h ago",
-    condition: "Used - Good",
-    postedAt: "Oct 24, 2024",
-    seller: { name: "Sarah M.", rating: 5.0, joined: "Jun 2019" }
+    title: "3BHK Luxury Villa with Pool",
+    price: "₹85,00,000",
+    description: "Modern 3BHK Villa in a gated community at Kazhakkoottam. 2200 sq.ft built-up area on 5 cents land. Private swimming pool, modular kitchen, and centralized AC in all bedrooms. \n\nWalking distance to Technopark. 24/7 security and water supply. Excellent investment opportunity or family home.",
+    location: "Trivandrum, Kerala",
+    category: "Real Estate",
+    imageUrl: "https://picsum.photos/seed/villa1/1200/800",
+    timeAgo: "4h ago",
+    condition: "New",
+    postedAt: "Oct 25, 2024",
+    seller: { name: "Abhilash Nair", rating: 5.0, joined: "Jun 2019" }
   },
   {
     id: "3",
-    title: "Sony A7III Mirrorless Camera Body",
-    price: "$1,100",
-    description: "Selling my Sony A7III body only. Shutter count is low (approx 12k). Excellent condition, no scratches on the sensor or screen. Includes original box, 2 batteries, and dual charger. \n\nPerfect for professionals or enthusiasts starting with full-frame photography.",
-    location: "Capitol Hill, Seattle",
+    title: "iPhone 15 Pro Max 256GB - Seal Packed",
+    price: "₹1,15,000",
+    description: "Brand new, unopened iPhone 15 Pro Max. Natural Titanium color. Indian unit with full warranty. Bill available. Received as a gift, already using one. \n\nNo exchange. Fixed price.",
+    location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: "https://picsum.photos/seed/elec1/1200/800",
-    timeAgo: "1d ago",
-    condition: "Used - Like New",
-    postedAt: "Oct 23, 2024",
-    seller: { name: "Tech Garage", rating: 4.9, joined: "Jan 2022" }
+    imageUrl: "https://picsum.photos/seed/phone1/1200/800",
+    timeAgo: "2h ago",
+    condition: "New",
+    postedAt: "Oct 25, 2024",
+    seller: { name: "Digital Hub", rating: 4.8, joined: "Feb 2023" }
   },
   {
     id: "4",
-    title: "1BR Apartment with Mountain View",
-    price: "$2,200/mo",
-    description: "Beautiful 1 bedroom apartment in the heart of Queen Anne. Top floor unit with stunning views of the Olympic Mountains. Modern kitchen with stainless steel appliances, in-unit laundry, and private balcony. \n\nAvailable for move-in Nov 1st. 12-month lease required.",
-    location: "Queen Anne, WA",
-    category: "Real Estate",
-    imageUrl: "https://picsum.photos/seed/home1/1200/800",
-    timeAgo: "3h ago",
-    condition: "N/A",
+    title: "Traditional Kerala Kasavu Saree",
+    price: "₹4,500",
+    description: "Handwoven premium Kasavu saree with golden tissue border. 100% pure cotton. Perfect for weddings and festivals. Includes unstitched blouse piece. \n\nAuthentic Kuthampully handloom.",
+    location: "Thrissur, Kerala",
+    category: "Apparel",
+    imageUrl: "https://picsum.photos/seed/saree1/1200/800",
+    timeAgo: "12h ago",
+    condition: "New",
     postedAt: "Oct 24, 2024",
-    seller: { name: "Management Co.", rating: 4.5, joined: "Sep 2018" }
+    seller: { name: "Lakshmi Handlooms", rating: 4.7, joined: "Sep 2020" }
   }
 ];
 
@@ -94,7 +92,7 @@ export default function ListingDetailsPage() {
           className="hover:bg-primary/5 text-primary w-fit"
         >
           <ChevronLeft className="mr-2 h-4 w-4" />
-          Back to results
+          Back to Kerala listings
         </Button>
         <div className="flex gap-2">
           <Button variant="outline" className="rounded-xl gap-2 font-medium">
@@ -168,8 +166,8 @@ export default function ListingDetailsPage() {
                 <p className="font-bold text-lg">{listing.postedAt}</p>
               </div>
               <div className="space-y-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Views</p>
-                <p className="font-bold text-lg">452</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Location</p>
+                <p className="font-bold text-lg">Kerala</p>
               </div>
             </div>
           </div>
@@ -186,7 +184,7 @@ export default function ListingDetailsPage() {
                   <h3 className="font-bold text-xl">{listing.seller.name}</h3>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                     <ShieldCheck className="h-4 w-4 text-green-500" />
-                    <span className="font-medium text-green-600">Verified Seller</span>
+                    <span className="font-medium text-green-600">Verified Kerala Seller</span>
                   </div>
                 </div>
               </div>
@@ -194,7 +192,7 @@ export default function ListingDetailsPage() {
               <div className="space-y-4">
                 <Button className="w-full h-14 rounded-2xl text-lg font-bold shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all">
                   <MessageCircle className="mr-2 h-6 w-6" />
-                  Reply to Ad
+                  Contact Seller
                 </Button>
                 <Button variant="outline" className="w-full h-14 rounded-2xl font-bold border-2 hover:bg-muted/50 transition-colors">
                   Make an Offer
@@ -202,19 +200,19 @@ export default function ListingDetailsPage() {
               </div>
 
               <div className="pt-6 border-t space-y-4">
-                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Pro Safety Guidelines</h4>
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Safety Guidelines</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0 shadow-sm shadow-primary/50" />
-                    <span className="text-sm text-muted-foreground font-medium">Inspect item in person before payment</span>
+                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground font-medium">Inspect the item in person before paying.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0 shadow-sm shadow-primary/50" />
-                    <span className="text-sm text-muted-foreground font-medium">Cash or secure digital payment only</span>
+                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground font-medium">Meet in a safe, public place.</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0 shadow-sm shadow-primary/50" />
-                    <span className="text-sm text-muted-foreground font-medium">Always meet in safe public locations</span>
+                    <div className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground font-medium">Avoid high-value cash transactions alone.</span>
                   </li>
                 </ul>
               </div>
@@ -229,7 +227,7 @@ export default function ListingDetailsPage() {
           <div className="bg-white rounded-3xl p-8 border-none shadow-xl">
             <h4 className="font-bold text-lg mb-6 flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
-              Location Details
+              Area Information
             </h4>
             <div className="aspect-square bg-muted rounded-2xl relative overflow-hidden border">
                <div className="absolute inset-0 flex items-center justify-center">
@@ -238,7 +236,7 @@ export default function ListingDetailsPage() {
                       <MapPin className="h-8 w-8 text-primary" />
                     </div>
                     <p className="text-lg font-bold">{listing.location}</p>
-                    <p className="text-xs text-muted-foreground mt-2 font-medium">Exact address provided upon inquiry</p>
+                    <p className="text-xs text-muted-foreground mt-2 font-medium">Verified local listing</p>
                   </div>
                </div>
             </div>

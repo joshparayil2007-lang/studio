@@ -7,59 +7,59 @@ import { ArrowRight, TrendingUp, ShieldCheck, Sparkles } from "lucide-react";
 const featuredListings = [
   {
     id: "1",
-    title: "2019 Tesla Model 3 Performance",
-    price: "$34,500",
-    location: "Downtown, Seattle",
+    title: "2022 Royal Enfield Classic 350",
+    price: "₹1,85,000",
+    location: "Kochi, Kerala",
     category: "Vehicles",
-    imageUrl: "https://picsum.photos/seed/car1/600/400",
-    timeAgo: "2h ago",
+    imageUrl: "https://picsum.photos/seed/bike1/600/400",
+    timeAgo: "1h ago",
     isPromoted: true
   },
   {
     id: "2",
-    title: "Vintage Mahogany Dining Table",
-    price: "$450",
-    location: "Ballard, WA",
-    category: "Home & Garden",
-    imageUrl: "https://picsum.photos/seed/garden1/600/400",
-    timeAgo: "5h ago"
+    title: "3BHK Luxury Villa with Pool",
+    price: "₹85,00,000",
+    location: "Trivandrum, Kerala",
+    category: "Real Estate",
+    imageUrl: "https://picsum.photos/seed/villa1/600/400",
+    timeAgo: "4h ago"
   },
   {
     id: "3",
-    title: "Sony A7III Mirrorless Camera Body",
-    price: "$1,100",
-    location: "Capitol Hill, Seattle",
+    title: "iPhone 15 Pro Max 256GB - Seal Packed",
+    price: "₹1,15,000",
+    location: "Kozhikode, Kerala",
     category: "Electronics",
-    imageUrl: "https://picsum.photos/seed/elec1/600/400",
-    timeAgo: "1d ago"
+    imageUrl: "https://picsum.photos/seed/phone1/600/400",
+    timeAgo: "2h ago"
   },
   {
     id: "4",
-    title: "1BR Apartment with Mountain View",
-    price: "$2,200/mo",
-    location: "Queen Anne, WA",
-    category: "Real Estate",
-    imageUrl: "https://picsum.photos/seed/home1/600/400",
-    timeAgo: "3h ago",
+    title: "Traditional Kerala Kasavu Saree",
+    price: "₹4,500",
+    location: "Thrissur, Kerala",
+    category: "Apparel",
+    imageUrl: "https://picsum.photos/seed/saree1/600/400",
+    timeAgo: "12h ago",
     isPromoted: true
   },
   {
     id: "5",
-    title: "Brand New Winter Parka - Size M",
-    price: "$120",
-    location: "Bellevue, WA",
-    category: "Apparel",
-    imageUrl: "https://picsum.photos/seed/wear1/600/400",
+    title: "Used Teak Wood Dining Set",
+    price: "₹25,000",
+    location: "Kollam, Kerala",
+    category: "Home & Garden",
+    imageUrl: "https://picsum.photos/seed/wood1/600/400",
     timeAgo: "8h ago"
   },
   {
     id: "6",
-    title: "Apple Watch Series 7 (GPS)",
-    price: "$280",
-    location: "Redmond, WA",
-    category: "Electronics",
-    imageUrl: "https://picsum.photos/seed/watch1/600/400",
-    timeAgo: "12h ago"
+    title: "Pet Persian Kittens for Adoption",
+    price: "₹8,000",
+    location: "Palakkad, Kerala",
+    category: "Pets",
+    imageUrl: "https://picsum.photos/seed/cat1/600/400",
+    timeAgo: "1d ago"
   }
 ];
 
@@ -77,7 +77,7 @@ export default function Home() {
               <TrendingUp className="h-4 w-4" />
               <span>Recommended</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight">Fresh near you</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Fresh near Kerala</h2>
           </div>
           <Button variant="ghost" className="text-primary font-semibold hover:text-primary/80 group">
             Browse all listings <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -100,7 +100,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Safe & Secure</h3>
               <p className="text-muted-foreground leading-relaxed">
-                In-app messaging and verified profiles keep your transactions safe and your contact info private.
+                Verified profiles and local meetups ensure a trustworthy Kerala classifieds experience.
               </p>
             </div>
             <div className="space-y-4">
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Fast Selling</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Reach thousands of active buyers in your immediate area within minutes of posting.
+                Connect with thousands of active buyers across Kerala in minutes.
               </p>
             </div>
             <div className="space-y-4">
@@ -118,7 +118,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">AI Assistant</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our AI helps you craft the perfect title and description so your items sell faster and for better prices.
+                Our AI helps you craft descriptions that resonate with the local market.
               </p>
             </div>
           </div>
