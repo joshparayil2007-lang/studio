@@ -1,8 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { CategoryNav } from "@/components/listings/CategoryNav";
 import { ListingCard } from "@/components/listings/ListingCard";
-import { Search, ArrowRight, TrendingUp, ShieldCheck, Map, Sparkles } from "lucide-react";
+import { LocationHero } from "@/components/home/LocationHero";
+import { ArrowRight, TrendingUp, ShieldCheck, Sparkles } from "lucide-react";
 
 const featuredListings = [
   {
@@ -66,43 +66,7 @@ const featuredListings = [
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="relative bg-primary overflow-hidden py-16 md:py-24">
-        {/* Abstract background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/2" />
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10 flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Find everything, <span className="text-accent">locally.</span>
-          </h1>
-          <p className="text-primary-foreground/90 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            LocalListings is the modern, safe, and intuitive way to buy and sell in your community. Optimized with AI to help you post faster and sell better.
-          </p>
-          
-          <div className="w-full max-w-2xl bg-white p-2 rounded-2xl shadow-2xl flex flex-col sm:flex-row gap-2">
-            <div className="flex-1 flex items-center px-4 gap-3 bg-muted/50 rounded-xl">
-              <Search className="h-5 w-5 text-muted-foreground" />
-              <input 
-                placeholder="What are you looking for?" 
-                className="bg-transparent border-none focus:ring-0 w-full h-12 text-sm md:text-base outline-none"
-              />
-            </div>
-            <div className="hidden sm:flex items-center px-4 gap-3 bg-muted/50 rounded-xl w-48">
-              <Map className="h-5 w-5 text-muted-foreground" />
-              <input 
-                placeholder="Location" 
-                className="bg-transparent border-none focus:ring-0 w-full h-12 text-sm outline-none"
-                defaultValue="Seattle, WA"
-              />
-            </div>
-            <Button size="lg" className="rounded-xl px-8 font-bold h-12 sm:h-auto">
-              Search
-            </Button>
-          </div>
-        </div>
-      </div>
+      <LocationHero />
 
       <CategoryNav />
 
