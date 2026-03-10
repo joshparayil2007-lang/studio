@@ -24,26 +24,26 @@ const allListings = [
     title: "3BHK Luxury Villa with Pool",
     price: "₹85,00,000",
     location: "Trivandrum, Kerala",
-    category: "Real Estate",
+    category: "Housing",
     type: "Villa",
     timeAgo: "4h ago"
   },
   {
     id: "3",
-    title: "iPhone 15 Pro Max 256GB - Seal Packed",
-    price: "₹1,15,000",
-    location: "Kozhikode, Kerala",
-    category: "Electronics",
-    type: "Smartphone",
+    title: "Full Stack Developer - React/Node",
+    price: "₹8L - 15L PA",
+    location: "Kochi, Kerala",
+    category: "Jobs",
+    type: "Tech",
     timeAgo: "2h ago"
   },
   {
     id: "4",
-    title: "Traditional Kerala Kasavu Saree",
-    price: "₹4,500",
+    title: "Professional House Painting",
+    price: "₹15/sq.ft",
     location: "Thrissur, Kerala",
-    category: "Apparel",
-    type: "Saree",
+    category: "Services",
+    type: "Home Improvement",
     timeAgo: "12h ago",
     isPromoted: true
   },
@@ -52,17 +52,17 @@ const allListings = [
     title: "Used Teak Wood Dining Set",
     price: "₹25,000",
     location: "Kollam, Kerala",
-    category: "Home & Garden",
+    category: "For Sale",
     type: "Furniture",
     timeAgo: "8h ago"
   },
   {
     id: "6",
-    title: "Pet Persian Kittens for Adoption",
-    price: "₹8,000",
-    location: "Palakkad, Kerala",
-    category: "Pets",
-    type: "Cat",
+    title: "Volunteer Beach Cleanup Kochi",
+    price: "Free",
+    location: "Fort Kochi, Kerala",
+    category: "Community",
+    type: "Activity",
     timeAgo: "1d ago"
   },
   {
@@ -79,7 +79,7 @@ const allListings = [
     title: "Coconut Grove Farm Land 2 Acre",
     price: "₹1,20,00,000",
     location: "Idukki, Kerala",
-    category: "Real Estate",
+    category: "Housing",
     type: "Land",
     timeAgo: "5h ago"
   }
@@ -107,7 +107,7 @@ export default function ListingsPage() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
           <div className="w-full md:max-w-xl relative">
             <Input 
-              placeholder="Search in Kerala..." 
+              placeholder="Search services, items, or jobs..." 
               className="pl-10 h-12 bg-white rounded-xl"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -131,7 +131,7 @@ export default function ListingsPage() {
             {categoryParam ? (
               <span>Listings in <span className="text-primary capitalize">{categoryParam.replace("-", " ")}</span></span>
             ) : (
-              "All Kerala Listings"
+              "All Local Listings"
             )}
             <span className="ml-2 text-sm font-normal text-muted-foreground">({filteredListings.length} results)</span>
           </h2>
@@ -147,7 +147,7 @@ export default function ListingsPage() {
           <div className="text-center py-24 bg-white rounded-3xl border shadow-sm">
             <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-20" />
             <h3 className="text-xl font-bold">No results found</h3>
-            <p className="text-muted-foreground mt-2">Try adjusting your filters for the Kerala region.</p>
+            <p className="text-muted-foreground mt-2">Try adjusting your filters or checking other categories.</p>
             <Button 
               variant="link" 
               className="mt-4 text-primary" 

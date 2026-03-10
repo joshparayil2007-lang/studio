@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   MapPin, 
-  Clock, 
   ChevronLeft, 
   Share2, 
   Heart, 
@@ -17,33 +16,26 @@ import {
   Info,
   TrendingUp,
   Award,
-  Zap,
   CheckCircle2,
   Car, 
   Home, 
-  Smartphone, 
-  Shirt, 
   Briefcase, 
-  Dog, 
-  Music, 
+  Users, 
   Hammer, 
-  Coffee, 
-  Package,
-  Tag
+  ShoppingBag, 
+  Zap,
+  ZapIcon
 } from "lucide-react";
 import { useMemo } from "react";
 
 const categoryIcons: Record<string, any> = {
   "Vehicles": Car,
-  "Real Estate": Home,
-  "Electronics": Smartphone,
-  "Apparel": Shirt,
+  "Housing": Home,
   "Jobs": Briefcase,
-  "Pets": Dog,
-  "Collectibles": Music,
-  "Home & Garden": Hammer,
-  "Services": Coffee,
-  "Free Stuff": Package,
+  "Community": Users,
+  "Services": Hammer,
+  "For Sale": ShoppingBag,
+  "Gigs": Zap,
 };
 
 const allListings = [
@@ -67,7 +59,7 @@ const allListings = [
     price: "₹85,00,000",
     description: "Modern 3BHK Villa in a gated community at Kazhakkoottam. 2200 sq.ft built-up area on 5 cents land. Private swimming pool, modular kitchen, and centralized AC in all bedrooms. \n\nWalking distance to Technopark. 24/7 security and water supply. Excellent investment opportunity or family home.",
     location: "Trivandrum, Kerala",
-    category: "Real Estate",
+    category: "Housing",
     type: "Villa",
     timeAgo: "4h ago",
     condition: "New",
@@ -77,31 +69,31 @@ const allListings = [
   },
   {
     id: "3",
-    title: "iPhone 15 Pro Max 256GB - Seal Packed",
-    price: "₹1,15,000",
-    description: "Brand new, unopened iPhone 15 Pro Max. Natural Titanium color. Indian unit with full warranty. Bill available. Received as a gift, already using one. \n\nNo exchange. Fixed price.",
-    location: "Kozhikode, Kerala",
-    category: "Electronics",
-    type: "Smartphone",
+    title: "Full Stack Developer - React/Node",
+    price: "₹8L - 15L PA",
+    description: "Looking for an experienced Full Stack Developer for a growing startup in Infopark. Required: React, Node.js, and experience with Firebase or AWS. \n\nHybrid work model available. Competitive salary and equity options.",
+    location: "Kochi, Kerala",
+    category: "Jobs",
+    type: "Tech",
     timeAgo: "2h ago",
-    condition: "New",
+    condition: "Full-Time",
     postedAt: "Oct 25, 2024",
-    seller: { name: "Digital Hub", rating: 4.8, joined: "Feb 2023" },
-    insight: "This price is 5% lower than the average retail price in Kozhikode electronic markets."
+    seller: { name: "Techno Solutions", rating: 4.8, joined: "Feb 2023" },
+    insight: "IT recruitment in Kochi is up 25% this quarter."
   },
   {
     id: "4",
-    title: "Traditional Kerala Kasavu Saree",
-    price: "₹4,500",
-    description: "Handwoven premium Kasavu saree with golden tissue border. 100% pure cotton. Perfect for weddings and festivals. Includes unstitched blouse piece. \n\nAuthentic Kuthampully handloom.",
+    title: "Professional House Painting",
+    price: "₹15/sq.ft",
+    description: "Expert interior and exterior painting services across Kerala. We use premium brands like Asian Paints and Berger. Professional crew, timely completion, and spotless cleanup. \n\nCall for a free estimate today.",
     location: "Thrissur, Kerala",
-    category: "Apparel",
-    type: "Saree",
+    category: "Services",
+    type: "Home Improvement",
     timeAgo: "12h ago",
-    condition: "New",
+    condition: "N/A",
     postedAt: "Oct 24, 2024",
-    seller: { name: "Lakshmi Handlooms", rating: 4.7, joined: "Sep 2020" },
-    insight: "Authentic Kuthampully sarees are currently in high demand for the upcoming festive season."
+    seller: { name: "SafeHands Painting", rating: 4.7, joined: "Sep 2020" },
+    insight: "Home improvement searches peak in Thrissur during the festival season."
   }
 ];
 
@@ -113,7 +105,7 @@ export default function ListingDetailsPage() {
     return allListings.find(item => item.id === id) || allListings[0];
   }, [id]);
 
-  const CategoryIcon = categoryIcons[listing.category] || Zap;
+  const CategoryIcon = categoryIcons[listing.category] || ZapIcon;
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -247,7 +239,7 @@ export default function ListingDetailsPage() {
                   <h3 className="font-bold text-xl">{listing.seller.name}</h3>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                     <ShieldCheck className="h-4 w-4 text-green-500" />
-                    <span className="font-bold text-green-600">VERIFIED KERALA SELLER</span>
+                    <span className="font-bold text-green-600">VERIFIED SELLER</span>
                   </div>
                 </div>
               </div>
@@ -255,7 +247,7 @@ export default function ListingDetailsPage() {
               <div className="space-y-4">
                 <Button className="w-full h-16 rounded-2xl text-lg font-black shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all uppercase tracking-widest">
                   <MessageCircle className="mr-3 h-6 w-6" />
-                  Contact Seller
+                  Contact
                 </Button>
                 <Button variant="outline" className="w-full h-16 rounded-2xl font-black border-2 hover:bg-muted/50 transition-colors uppercase tracking-widest">
                   Make an Offer
@@ -263,19 +255,19 @@ export default function ListingDetailsPage() {
               </div>
 
               <div className="pt-6 border-t border-dashed space-y-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Regional Safety Protocol</h4>
+                <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Safety Protocol</h4>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-4">
                     <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                       <CheckCircle2 className="h-3 w-3 text-green-600" />
                     </div>
-                    <span className="text-sm text-muted-foreground font-medium">Meet in public landmarks (e.g. Malls, Metro Stations).</span>
+                    <span className="text-sm text-muted-foreground font-medium">Meet in public landmarks.</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                       <CheckCircle2 className="h-3 w-3 text-green-600" />
                     </div>
-                    <span className="text-sm text-muted-foreground font-medium">Verify Kerala identity documents for high-value items.</span>
+                    <span className="text-sm text-muted-foreground font-medium">Verify documents for high-value items.</span>
                   </li>
                 </ul>
               </div>

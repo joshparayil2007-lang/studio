@@ -10,16 +10,13 @@ import {
   ShieldCheck,
   Car, 
   Home, 
-  Smartphone, 
-  Shirt, 
   Briefcase, 
-  Dog, 
-  Music, 
   Hammer, 
-  Coffee, 
-  Package,
+  ShoppingBag, 
   Zap,
-  Tag
+  HelpCircle,
+  Tag,
+  CircleHelp
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -37,15 +34,16 @@ interface ListingCardProps {
 
 const categoryIcons: Record<string, any> = {
   "Vehicles": Car,
+  "Housing": Home,
   "Real Estate": Home,
-  "Electronics": Smartphone,
-  "Apparel": Shirt,
   "Jobs": Briefcase,
-  "Pets": Dog,
-  "Collectibles": Music,
-  "Home & Garden": Hammer,
-  "Services": Coffee,
-  "Free Stuff": Package,
+  "Community": Users,
+  "Services": Hammer,
+  "For Sale": ShoppingBag,
+  "Gigs": Zap,
+  "Electronics": ShoppingBag,
+  "Apparel": ShoppingBag,
+  "Pets": Users,
 };
 
 export function ListingCard({
@@ -61,16 +59,14 @@ export function ListingCard({
   const [viewers, setViewers] = useState(0);
 
   useEffect(() => {
-    // Generate a random "Live Viewers" number for interactivity
     setViewers(Math.floor(Math.random() * 12) + 2);
   }, []);
 
-  const CategoryIcon = categoryIcons[category] || Zap;
+  const CategoryIcon = categoryIcons[category] || CircleHelp;
 
   return (
     <Link href={`/listings/${id}`} className="group block">
       <Card className="overflow-hidden h-full border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white group-hover:-translate-y-1">
-        {/* Replacement for Image: Dynamic Vibe Header */}
         <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center border-b p-6">
           <div className="text-center space-y-3">
             <div className="w-16 h-16 bg-white rounded-3xl shadow-lg flex items-center justify-center mx-auto text-primary group-hover:scale-110 transition-transform duration-500">

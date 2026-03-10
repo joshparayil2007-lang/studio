@@ -38,7 +38,7 @@ const prompt = ai.definePrompt({
   output: {schema: AiListingAssistantOutputSchema},
   prompt: `You are an AI assistant for a classifieds app called LocalListings. Your task is to help users create compelling classified ads. Based on the provided description (and optionally a photo), you will generate an engaging title, refine the ad description for clarity and appeal, and suggest up to 3 relevant categories from the following predefined list.
 
-Available Categories: Vehicles, Real Estate, Electronics, Home & Garden, Apparel, Services, Jobs, Pets, Collectibles, Free Stuff.
+Available Categories: Community, Housing, Jobs, Services, For Sale, Gigs, Vehicles, Missed Connections, Discussion.
 
 User input:
 Description: {{{rawDescription}}}

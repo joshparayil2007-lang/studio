@@ -1,33 +1,30 @@
-
 "use client";
 
 import { cn } from "@/lib/utils";
 import { 
   Car, 
   Home, 
-  Smartphone, 
-  Shirt, 
   Briefcase, 
-  Dog, 
-  Music, 
+  Users, 
   Hammer, 
-  Coffee, 
-  Package 
+  ShoppingBag, 
+  Zap,
+  Heart,
+  HelpCircle
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const categories = [
-  { name: "Vehicles", icon: Car, slug: "vehicles" },
-  { name: "Real Estate", icon: Home, slug: "real-estate" },
-  { name: "Electronics", icon: Smartphone, slug: "electronics" },
-  { name: "Apparel", icon: Shirt, slug: "apparel" },
+  { name: "Community", icon: Users, slug: "community" },
+  { name: "Housing", icon: Home, slug: "housing" },
   { name: "Jobs", icon: Briefcase, slug: "jobs" },
-  { name: "Pets", icon: Dog, slug: "pets" },
-  { name: "Collectibles", icon: Music, slug: "collectibles" },
-  { name: "Home & Garden", icon: Hammer, slug: "home-garden" },
-  { name: "Services", icon: Coffee, slug: "services" },
-  { name: "Free Stuff", icon: Package, slug: "free-stuff" },
+  { name: "Services", icon: Hammer, slug: "services" },
+  { name: "For Sale", icon: ShoppingBag, slug: "for-sale" },
+  { name: "Gigs", icon: Zap, slug: "gigs" },
+  { name: "Vehicles", icon: Car, slug: "vehicles" },
+  { name: "Missed Connections", icon: Heart, slug: "missed-connections" },
+  { name: "Discussion", icon: HelpCircle, slug: "discussion" },
 ];
 
 export function CategoryNav() {

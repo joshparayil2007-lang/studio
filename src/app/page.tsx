@@ -20,26 +20,26 @@ const featuredListings = [
     title: "3BHK Luxury Villa with Pool",
     price: "₹85,00,000",
     location: "Trivandrum, Kerala",
-    category: "Real Estate",
+    category: "Housing",
     type: "Villa",
     timeAgo: "4h ago"
   },
   {
     id: "3",
-    title: "iPhone 15 Pro Max 256GB - Seal Packed",
-    price: "₹1,15,000",
-    location: "Kozhikode, Kerala",
-    category: "Electronics",
-    type: "Smartphone",
+    title: "Full Stack Developer - React/Node",
+    price: "₹8L - 15L PA",
+    location: "Kochi, Kerala",
+    category: "Jobs",
+    type: "Tech",
     timeAgo: "2h ago"
   },
   {
     id: "4",
-    title: "Traditional Kerala Kasavu Saree",
-    price: "₹4,500",
+    title: "Professional House Painting",
+    price: "₹15/sq.ft",
     location: "Thrissur, Kerala",
-    category: "Apparel",
-    type: "Saree",
+    category: "Services",
+    type: "Home Improvement",
     timeAgo: "12h ago",
     isPromoted: true
   },
@@ -48,17 +48,17 @@ const featuredListings = [
     title: "Used Teak Wood Dining Set",
     price: "₹25,000",
     location: "Kollam, Kerala",
-    category: "Home & Garden",
+    category: "For Sale",
     type: "Furniture",
     timeAgo: "8h ago"
   },
   {
     id: "6",
-    title: "Pet Persian Kittens for Adoption",
-    price: "₹8,000",
-    location: "Palakkad, Kerala",
-    category: "Pets",
-    type: "Cat",
+    title: "Volunteer Beach Cleanup Kochi",
+    price: "Free",
+    location: "Fort Kochi, Kerala",
+    category: "Community",
+    type: "Activity",
     timeAgo: "1d ago"
   }
 ];
@@ -77,7 +77,7 @@ export default function Home() {
               <TrendingUp className="h-4 w-4" />
               <span>Recommended</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight">Fresh near Kerala</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Fresh near you</h2>
           </div>
           <Button variant="ghost" className="text-primary font-semibold hover:text-primary/80 group" asChild>
             <a href="/listings">
@@ -102,7 +102,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Safe & Secure</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Verified profiles and local meetups ensure a trustworthy Kerala classifieds experience.
+                In-app messaging and verified profiles keep your transactions safe and your contact info private.
               </p>
             </div>
             <div className="space-y-4">
@@ -111,7 +111,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">Fast Selling</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Connect with thousands of active buyers across Kerala in minutes.
+                Reach thousands of active buyers in your immediate area within minutes of posting.
               </p>
             </div>
             <div className="space-y-4">
@@ -120,7 +120,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold">AI Assistant</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our AI helps you craft descriptions that resonate with the local market.
+                Our AI helps you craft the perfect title and description so your items sell faster and for better prices.
               </p>
             </div>
           </div>
