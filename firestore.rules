@@ -1,0 +1,122 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * LOCAL LISTINGS SECURITY RULES
+     *
+     * CORE PHILOSOPHY:
+     * This ruleset implements a robust, multi-layered security model for a local classifieds application. 
+     * It prioritizes "Authorization Independence" by leveraging denormalized data (like owner IDs and 
+     * participant lists) directly on documents to ensure fast, scalable, and atomic security checks 
+     * without relying on cross-document lookups (get() calls).
+     *
+     * DATA STRUCTURE:
+     * - /users/{userId}: Private profile data owned by the specific user.
+     * - /categories/{categoryId}: Publicly readable metadata for organizing listings.
+     * - /listings/{listingId}: Publicly searchable advertisements with owner-only write permissions.
+     * - /conversations/{conversationId}: Private collaborative spaces between buyers and sellers.
+     * - /conversations/{conversationId}/messages/{messageId}: Nested private messages.
+     *
+     * KEY SECURITY DECISIONS:
+     * 1. Ownership Model: Strict path-based ownership for user profiles and data-based ownership for listings.
+     * 2. Shared Access: Conversations and Messages use a 'participants' array for collaborative access, 
+     *    allowing both the listing owner and the inquirer to interact.
+     * 3. Public vs Private: Listings use a 'status' field ('Active' vs 'Draft') to toggle public visibility.
+     * 4. Relational Integrity: On creation, rules enforce that ownership fields (like userId) match the 
+     *    authenticated user's ID and remain immutable during updates.
+     */
+
+    // --- Global Helper Functions ---
+
+    /** Checks if the request is made by an authenticated user. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** Checks if the authenticated user's UID matches the provided userId. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /** Checks if the user is the owner and the document exists (for updates/deletes). */
+    function isExistingOwner(userId) {
+      return resource != null && isOwner(userId);
+    }
+
+    /** Checks if the authenticated user is a member of a participants list/map. */
+    function isParticipant(participants) {
+      return isSignedIn() && (request.auth.uid in participants || participants.hasAny([request.auth.uid]));
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Rules for user profiles. Users can only manage their own profile.
+     * @path /users/{userId}
+     * @allow (get, list, update) if the authenticated user's UID matches {userId}.
+     * @deny (create) if the UID in the document body does not match the UID in the path.
+     * @principle Enforces strict path-based ownership and validates relational integrity of the ID field.
+     */
+    match /users/{userId} {
+      allow get, list: if isOwner(userId);
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Global categories for listings. Read-only for all users.
+     * @path /categories/{categoryId}
+     * @allow (get, list) for any user (public).
+     * @deny (create, update, delete) for all users (Admin-only, handled via dashboard/backend).
+     * @principle Provides public access to read-only taxonomy data.
+     */
+    match /categories/{categoryId} {
+      allow get, list: if true;
+      allow create, update, delete: if false; // Admin role not defined in IR; restricting writes.
+    }
+
+    /**
+     * @description Classified listings. Owners manage their listings; others see 'Active' listings.
+     * @path /listings/{listingId}
+     * @allow (get, list) if the listing is 'Active' or if the user is the owner.
+     * @allow (create) if the userId in data matches auth.uid.
+     * @deny (update) if the owner attempts to change the userId (ownership transfer).
+     * @principle Uses data-denormalization (userId) for ownership and status-based visibility.
+     */
+    match /listings/{listingId} {
+      allow get, list: if resource.data.status == 'Active' || isOwner(resource.data.userId);
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isExistingOwner(resource.data.userId) && request.resource.data.userId == resource.data.userId;
+      allow delete: if isExistingOwner(resource.data.userId);
+    }
+
+    /**
+     * @description Private messaging threads. Restricted to the listing owner and the inquirer.
+     * @path /conversations/{conversationId}
+     * @allow (get, list, create, update) if the user's UID is in the 'participants' array.
+     * @deny (delete) typically prevented to maintain history.
+     * @principle Implements Shared Access (Closed Collaborators) using a participants array.
+     */
+    match /conversations/{conversationId} {
+      allow get, list: if isParticipant(resource.data.participants);
+      allow create: if isSignedIn() && isParticipant(request.resource.data.participants);
+      allow update: if isParticipant(resource.data.participants) && request.resource.data.participants == resource.data.participants;
+      allow delete: if false; // Conversations generally shouldn't be deleted by participants.
+
+      /**
+       * @description Messages within a conversation.
+       * @path /conversations/{conversationId}/messages/{messageId}
+       * @allow (get, list, create) if the user's UID is in the denormalized 'participants' array.
+       * @deny (update, delete) to ensure message integrity/immutability.
+       * @principle Uses denormalization of the parent's participants to avoid expensive parent-lookups.
+       */
+      match /messages/{messageId} {
+        allow get, list: if isParticipant(resource.data.participants);
+        allow create: if isSignedIn() && isParticipant(request.resource.data.participants) && request.resource.data.senderId == request.auth.uid;
+        allow update, delete: if false; // Standard practice for chat: messages are immutable.
+      }
+    }
+  }
+}
